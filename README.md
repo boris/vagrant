@@ -1,4 +1,23 @@
 # Vagrantfile
+
+## Setup
+```bash
+$ git clone git@github.com:boris/vagrant.git
+$ cd vagrant
+$ vagrant status
+Current machine states:
+
+instance0                 not created (virtualbox)
+instance1                 not created (virtualbox)
+instance2                 not created (virtualbox)
+
+This environment represents multiple VMs. The VMs are all listed
+above with their current state. For more information about a specific
+VM, run `vagrant status NAME`.
+$ vagarnt up instance2
+```
+
+## Provision
 This Vagrantfile contains the configuration for three different instances, each
 of them provisioned with different methods.
 
