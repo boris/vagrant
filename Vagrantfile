@@ -3,7 +3,7 @@
 VAGRANTFILE_API_VERSION = "2"
  
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.define "instance0" do |d|
+  config.vm.define "ubuntu_chef" do |d|
       d.vm.box = "ubuntu/trusty64"
       d.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
       d.vm.hostname = "NAME"
@@ -24,15 +24,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
  
   end
  
-  config.vm.define "instance1" do |m|
+  config.vm.define "ubuntu" do |m|
       m.vm.box = "ubuntu/trusty64"
-      m.vm.hostname = "instance1"
+      m.vm.hostname = "ubuntu"
       m.vm.provision "shell", path: "/path/to/script.sh"
   end
  
-  config.vm.define "instance2" do |s|
-      s.vm.box = "ubuntu/trusty64"
-      s.vm.hostname = "instance2"
+  config.vm.define "arch" do |s|
+      s.vm.box = "arch64_2013"
+      s.vm.hostname = "arch"
   end
  
 end
