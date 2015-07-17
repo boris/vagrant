@@ -7,9 +7,9 @@ $ cd vagrant
 $ vagrant status
 Current machine states:
 
-instance0                 not created (virtualbox)
-instance1                 not created (virtualbox)
-instance2                 not created (virtualbox)
+ubuntu_chef               not created (virtualbox)
+ubuntu                    not created (virtualbox)
+arch                      not created (virtualbox)
 
 This environment represents multiple VMs. The VMs are all listed
 above with their current state. For more information about a specific
@@ -28,3 +28,11 @@ provision method, modify the following variables:
 - `chef.node_name`: the name your instance will send to chef server
 - `chef.validation_key_path`: where your `.pem` key is
 - `chef.validation_client_name`: the used associated to your `.pem` key.
+
+## Add vagrant box
+To add the vagrant box for ArchLinux included in this config, run the following
+command:
+
+```
+$ vagrant box add arch64_2013 https://dl.dropboxusercontent.com/u/31112574/arch64-20130801.box
+```
