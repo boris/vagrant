@@ -24,15 +24,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
  
   end
  
-  config.vm.define "ubuntu" do |m|
+  config.vm.define "ubuntu_shell" do |m|
       m.vm.box = "ubuntu/trusty64"
       m.vm.hostname = "ubuntu"
       m.vm.provision "shell", path: "/path/to/script.sh"
   end
  
-  config.vm.define "arch" do |s|
-      s.vm.box = "arch64_2013"
-      s.vm.hostname = "arch"
+  config.vm.define "ubuntu" do |s|
+      s.vm.box = "ubuntu/trusty64"
+      s.vm.hostname = "ubuntu"
   end
  
 end
