@@ -33,6 +33,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define "ubuntu" do |s|
       s.vm.box = "ubuntu/trusty64"
       s.vm.hostname = "ubuntu"
+      s.vm.network "public_network"
   end
  
 end
