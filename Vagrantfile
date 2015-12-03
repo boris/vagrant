@@ -24,10 +24,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
  
   end
  
-  config.vm.define "ubuntu_shell" do |m|
+  config.vm.define "ubuntu-gluster" do |m|
       m.vm.box = "ubuntu/trusty64"
-      m.vm.hostname = "ubuntu"
-      m.vm.provision "shell", path: "/path/to/script.sh"
+      m.vm.hostname = "ubuntu-glusterfs"
+      m.vm.network "public_network"
+      #m.vm.provision "shell", path: "/path/to/script.sh"
   end
  
   config.vm.define "ubuntu" do |s|
