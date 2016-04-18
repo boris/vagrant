@@ -34,7 +34,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define "ubuntu" do |s|
       s.vm.box = "ubuntu/trusty64"
       s.vm.hostname = "ubuntu"
-      #s.vm.network :private_network, ip: "10.11.12.13"
+      s.vm.network :private_network, ip: "10.11.12.13"
+      s.vm.network "forwarded_port", guest: 5240, host:5240
   end
  
 end
