@@ -36,5 +36,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       s.vm.hostname = "ubuntu"
       #s.vm.network :private_network, ip: "10.11.12.13"
   end
+
+  config.vm.define "chef-server" do |c|
+    c.vm.box = "ubuntu/trusty64"
+    c.vm.hostname = "chef-server"
+    c.vm.network "public_network"
+    c.vm.provision "shell", path: "provision/chef_server.sh"
+  end
  
 end
