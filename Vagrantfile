@@ -44,5 +44,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     c.vm.network "public_network"
     c.vm.provision "shell", path: "provision/chef_server.sh"
   end
+
+  config.vm.define "jessie" do |j|
+    j.vm.box = "debian/jessie64"
+    j.vm.hostname = "debian"
+    j.vm.network "public_network"
+  end
  
 end
