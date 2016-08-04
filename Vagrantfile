@@ -50,5 +50,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     j.vm.hostname = "debian"
     j.vm.network "public_network"
   end
+
+  config.vm.define "jessie-client" do |jc|
+    jc.vm.box = "debian/jessie64"
+    jc.vm.hostname = "jessie"
+    jc.vm.network "public_network"
+  end
  
 end
