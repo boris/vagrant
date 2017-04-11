@@ -56,5 +56,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     jc.vm.hostname = "jessie"
     jc.vm.network "public_network"
   end
+
+  config.vm.define "ubuntu-nodejs" do |n|
+    n.vm.box = "ubuntu/xenial64"
+    n.vm.hostname = "ubuntu-nodejs"
+    #n.vm.provision "shell", path: "provision/nodejs.sh"
+  end
  
 end
