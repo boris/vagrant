@@ -21,7 +21,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           # Run list
           chef.add_role = "development"
       end
- 
   end
  
   config.vm.define "ubuntu-gluster" do |m|
@@ -60,7 +59,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define "ubuntu-nodejs" do |n|
     n.vm.box = "ubuntu/xenial64"
     n.vm.hostname = "ubuntu-nodejs"
-    #n.vm.provision "shell", path: "provision/nodejs.sh"
+    n.vm.provision "shell", path: "provision/nodejs.sh"
+    n.vm.network :private_network, ip: "1.2.3.4"
+    n.vm.network "forwarded_port", guest: 8080, host:8080
+    n.vm.synced_folder "~/Code", "/vagrant"
   end
  
 end
