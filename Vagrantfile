@@ -72,4 +72,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     pg0.vm.provision "shell", path: "provision/postgresql.sh"
   end
  
+  config.vm.define "ubuntu-postgresql-1" do |pg1|
+    pg1.vm.box = "ubuntu/xenial64"
+    pg1.vm.hostname = "ubuntu-postgresql-1"
+    pg1.vm.network "public_network"
+    pg1.vm.provision "shell", path: "provision/postgresql.sh"
+  end
+ 
 end
