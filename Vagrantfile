@@ -76,6 +76,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     pg1.vm.box = "ubuntu/xenial64"
     pg1.vm.hostname = "ubuntu-postgresql-cluster-1"
     pg1.vm.network "public_network"
+    pg1.vm.provision "shell", path: "provision/postgresql-cluster.sh"
   end
  
 end
