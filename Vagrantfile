@@ -78,5 +78,18 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     pg1.vm.network "public_network"
     pg1.vm.provision "shell", path: "provision/postgresql-cluster.sh"
   end
+
+  config.vm.define "redis0" do |r0|
+    r0.vm.box = "ubuntu/xenial64"
+    r0.vm.hostname = "redis0"
+    r0.vm.network "public_network"
+    r0.vm.network "forwarded_port", guest: 6379, host: 6379
+  end
  
+  config.vm.define "redis1" do |r1|
+    r1.vm.box = "ubuntu/xenial64"
+    r1.vm.hostname = "redis1"
+    r1.vm.network "public_network"
+    r1.vm.network "forwarded_port", guest: 6380, host: 6380
+  end
 end
