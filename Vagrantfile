@@ -78,5 +78,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     pg1.vm.network "public_network"
     pg1.vm.provision "shell", path: "provision/postgresql.sh"
   end
- 
+
+  config.vm.define "cdecsic" do |cd|
+    cd.vm.box = "ubuntu/xenial64"
+    cd.vm.hostname = "cdec-chef"
+    cd.vm.network :private_network, ip: "10.11.12.13"
+    cd.vm.network "forwarded_port", guest: 22, host:22
+  end
+
 end
