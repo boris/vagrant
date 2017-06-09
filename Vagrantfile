@@ -35,6 +35,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       s.vm.hostname = "ubuntu"
       s.vm.network :private_network, ip: "10.11.12.13"
       s.vm.network "forwarded_port", guest: 22, host:22
+      s.vm.network "forwarded_port", guest: 80, host:80
       s.vm.network "forwarded_port", guest: 5240, host:5240
   end
 
