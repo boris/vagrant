@@ -34,7 +34,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       s.vm.box = "ubuntu/xenial64"
       s.vm.hostname = "ubuntu"
       s.vm.network :private_network, ip: "10.11.12.13"
-      s.vm.network "forwarded_port", guest: 5240, host:5240
+      s.vm.network "forwarded_port", guest: 5000, host:5000
   end
 
   config.vm.define "chef-server" do |c|
