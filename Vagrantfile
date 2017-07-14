@@ -88,4 +88,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     cd.vm.network "forwarded_port", guest: 22, host:22
   end
 
+  config.vm.define "ubuntu-local" do |ul|
+    ul.vm.box = "ubuntu/xenial64"
+    ul.vm.hostname = "ubuntu-local"
+    ul.vm.network :private_network, type: "dhcp"
+  end
+
 end
