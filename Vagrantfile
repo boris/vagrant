@@ -91,7 +91,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define "ubuntu-local" do |ul|
     ul.vm.box = "ubuntu/xenial64"
     ul.vm.hostname = "ubuntu-local"
-    ul.vm.network :private_network, type: "dhcp"
+    ul.vm.network :public_network
   end
 
 end
