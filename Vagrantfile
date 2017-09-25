@@ -61,7 +61,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     n.vm.hostname = "ubuntu-nodejs"
     n.vm.provision "shell", path: "provision/nodejs.sh"
     n.vm.network :private_network, ip: "1.2.3.4"
-    n.vm.network "forwarded_port", guest: 8080, host:8080
+    #n.vm.network "forwarded_port", guest: 8080, host:8080
     n.vm.synced_folder "~/Code", "/vagrant"
   end
 
@@ -85,13 +85,26 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     cd.vm.box = "ubuntu/xenial64"
     cd.vm.hostname = "cdec-chef"
     cd.vm.network :private_network, ip: "10.11.12.13"
-    cd.vm.network "forwarded_port", guest: 22, host:22
+    cd.vm.network "forwarded_port", guest: 22, host: 22
   end
 
   config.vm.define "ubuntu-local" do |ul|
     ul.vm.box = "ubuntu/xenial64"
     ul.vm.hostname = "ubuntu-local"
     ul.vm.network :public_network
+    ul.vm.network "forwarded_port", guest: 8080, host: 8080
+  end
+
+  config.vm.define "salt-master" do |sma|
+    sma.vm.box = "ubuntu/xenial64"
+    sma.vm.hostname = "salt-master"
+    sma.vm.network :public_network
+  end
+
+  config.vm.define "salt-minion" do |smi|
+    smi.vm.box = "ubuntu/xenial64"
+    smi.vm.hostname = "salt-minion"
+    smi.vm.network :public_network
   end
 
 end
