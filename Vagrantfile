@@ -107,4 +107,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     smi.vm.network :public_network
   end
 
+  config.vm.define "rsk-node" do |rsk|
+      rsk.vm.box = "ubuntu/xenial64"
+      rsk.vm.hostname = "rsk-node"
+      rsk.vm.network :public_network
+  end
+
 end
