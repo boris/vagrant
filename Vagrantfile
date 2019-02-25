@@ -107,4 +107,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     smi.vm.network :public_network
   end
 
+  config.vm.define "cassandra-0" do |c0|
+    c0.vm.box = "ubuntu/xenial64"
+    c0.vm.hostname = "cassandra-0"
+    c0.vm.network :public_network
+  end
+
 end
