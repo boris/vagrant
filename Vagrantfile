@@ -22,6 +22,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           chef.add_role = "development"
       end
   end
+
+  config.vm.define "ubuntu-base" do |ub|
+    ub.vm.box = "ubuntu/xenial64"
+    ub.vm.hostname = "ubuntu-base"
+    ub.vm.network "public_network"
+  end
  
   config.vm.define "ubuntu-gluster" do |m|
       m.vm.box = "ubuntu/trusty64"
