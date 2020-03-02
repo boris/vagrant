@@ -67,4 +67,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     pg1.vm.provision "shell", path: "provision/postgresql.sh"
   end
 
+  config.vm.define "databases" do |db|
+      db.vm.box = "ubuntu/bionic64"
+      db.vm.hostname = "databases"
+      db.vm.network "public_network"
+      db.vm.provision "shell", path: "provision/databases.sh"
+  end
 end
