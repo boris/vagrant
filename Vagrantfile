@@ -29,13 +29,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ub.vm.network "public_network"
   end
  
-  config.vm.define "ubuntu-gluster" do |m|
-      m.vm.box = "ubuntu/trusty64"
-      m.vm.hostname = "ubuntu-glusterfs"
-      m.vm.network "public_network"
-      #m.vm.provision "shell", path: "/path/to/script.sh"
-  end
- 
   config.vm.define "ubuntu" do |s|
       s.vm.box = "ubuntu/xenial64"
       s.vm.hostname = "ubuntu"
@@ -48,18 +41,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     c.vm.hostname = "chef-server"
     c.vm.network "public_network"
     c.vm.provision "shell", path: "provision/chef_server.sh"
-  end
-
-  config.vm.define "jessie" do |j|
-    j.vm.box = "debian/jessie64"
-    j.vm.hostname = "debian"
-    j.vm.network "public_network"
-  end
-
-  config.vm.define "jessie-client" do |jc|
-    jc.vm.box = "debian/jessie64"
-    jc.vm.hostname = "jessie"
-    jc.vm.network "public_network"
   end
 
   config.vm.define "ubuntu-nodejs" do |n|
@@ -75,7 +56,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     pg0.vm.box = "ubuntu/xenial64"
     pg0.vm.hostname = "ubuntu-postgresql-0"
     pg0.vm.network "public_network"
-    #pg0.vm.provision "shell", path: "provision/postgresql.sh"
     pg0.vm.provision "shell", path: "provision/postgresql.sh"
     pg0.vm.network "forwarded_port", guest: 5432, host:15432
   end
@@ -85,38 +65,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     pg1.vm.hostname = "ubuntu-postgresql-1"
     pg1.vm.network "public_network"
     pg1.vm.provision "shell", path: "provision/postgresql.sh"
-  end
-
-  config.vm.define "cdecsic" do |cd|
-    cd.vm.box = "ubuntu/xenial64"
-    cd.vm.hostname = "cdec-chef"
-    cd.vm.network :private_network, ip: "10.11.12.13"
-    cd.vm.network "forwarded_port", guest: 22, host: 22
-  end
-
-  config.vm.define "ubuntu-local" do |ul|
-    ul.vm.box = "ubuntu/xenial64"
-    ul.vm.hostname = "ubuntu-local"
-    ul.vm.network :public_network
-    ul.vm.network "forwarded_port", guest: 8080, host: 8080
-  end
-
-  config.vm.define "salt-master" do |sma|
-    sma.vm.box = "ubuntu/xenial64"
-    sma.vm.hostname = "salt-master"
-    sma.vm.network :public_network
-  end
-
-  config.vm.define "salt-minion" do |smi|
-    smi.vm.box = "ubuntu/xenial64"
-    smi.vm.hostname = "salt-minion"
-    smi.vm.network :public_network
-  end
-
-  config.vm.define "cassandra-0" do |c0|
-    c0.vm.box = "ubuntu/xenial64"
-    c0.vm.hostname = "cassandra-0"
-    c0.vm.network :public_network
   end
 
 end
