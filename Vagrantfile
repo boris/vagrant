@@ -3,7 +3,7 @@
 VAGRANTFILE_API_VERSION = "2"
  
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.define "ubuntu-base" do |ub|
+  config.vm.define "ubuntu" do |ub|
     ub.vm.box = "ubuntu/bionic64"
     ub.vm.hostname = "ubuntu-base"
     ub.vm.network "public_network"
