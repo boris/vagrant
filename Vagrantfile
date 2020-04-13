@@ -22,4 +22,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       db.vm.network "public_network"
       db.vm.provision "shell", path: "provision/databases.sh"
   end
+
+  config.vm.define "digitalocean" do |sf|
+      sf.vm.box = "ubuntu/bionic64"
+      sf.vm.hostname = "digitalocean"
+  end
 end
