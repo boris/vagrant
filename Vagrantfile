@@ -27,4 +27,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       sf.vm.box = "ubuntu/bionic64"
       sf.vm.hostname = "digitalocean"
   end
+
+  config.vm.define "kali" do |k|
+      k.vm.box = "kalilinux/rolling"
+      k.vm.hostname = "kali"
+  end
 end
