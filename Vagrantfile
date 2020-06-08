@@ -28,4 +28,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       gc.vm.hostname = "gcloud-box"
       gc.vm.provision "shell", path: "provision/gcloud.sh"
   end
+
+  config.vm.define "docker" do |dc|
+      dc.vm.box = "ubuntu/focal64"
+      dc.vm.hostname = "docker"
+      dc.vm.provision "shell", path: "provision/docker.sh"
+  end
 end
