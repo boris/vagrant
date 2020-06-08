@@ -23,14 +23,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       db.vm.provision "shell", path: "provision/databases.sh"
   end
 
-  config.vm.define "digitalocean" do |sf|
-      sf.vm.box = "ubuntu/bionic64"
-      sf.vm.hostname = "digitalocean"
-  end
-
   config.vm.define "gcloud" do |gc|
       gc.vm.box = "ubuntu/bionic64"
       gc.vm.hostname = "gcloud-box"
       gc.vm.provision "shell", path: "provision/gcloud.sh"
+  end
+
+  config.vm.define "docker" do |dc|
+      dc.vm.box = "ubuntu/focal64"
+      dc.vm.hostname = "docker"
+      dc.vm.provision "shell", path: "provision/docker.sh"
   end
 end
