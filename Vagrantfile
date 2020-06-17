@@ -34,4 +34,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       dc.vm.hostname = "docker"
       dc.vm.provision "shell", path: "provision/docker.sh"
   end
+
+  config.vm.define "freebsd" do |fb|
+      fb.vm.box = "freebsd/FreeBSD-11.4-RELEASE"
+      fb.vm.hostname = "freebsd"
+  end
 end
