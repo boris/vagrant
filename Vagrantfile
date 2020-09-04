@@ -34,4 +34,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       dc.vm.hostname = "docker"
       dc.vm.provision "shell", path: "provision/docker.sh"
   end
+
+  config.vm.define "code" do |co|
+      co.vm.box = "ubuntu/bionic64"
+      co.vm.hostname = "code"
+      co.vm.provision "shell", path: "provision/code.sh"
+      co.vm.provision "file", source: "provision/code.txt", destination: "~/code.txt"
+  end
 end
