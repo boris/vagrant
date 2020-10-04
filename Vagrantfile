@@ -39,6 +39,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       co.vm.box = "ubuntu/bionic64"
       co.vm.hostname = "code"
       co.vm.provision "shell", path: "provision/code.sh"
-      co.vm.provision "file", source: "provision/code.txt", destination: "~/code.txt"
+  end
+
+  config.vm.define "centos" do |ce|
+      ce.vm.box = "centos/7"
+      ce.vm.hostname = "centos-dev"
+      ce.vm.synced_folder "/home/boris/Code/acloud/python/project", "/home/vagrant/code"
   end
 end
