@@ -17,7 +17,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.define "databases" do |db|
-      db.vm.box = "ubuntu/bionic64"
+      db.vm.box = "ubuntu/focal64"
       db.vm.hostname = "databases"
       db.vm.network "public_network"
       db.vm.provision "shell", path: "provision/databases.sh"
