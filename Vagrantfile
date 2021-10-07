@@ -40,4 +40,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       ce.vm.hostname = "centos-dev"
       ce.vm.synced_folder "/home/boris/Code/acloud/python/project", "/home/vagrant/code"
   end
+
+  config.vm.define "test-docker" do |td|
+    td.vm.provider "docker" do |d|
+      d.image = "ubuntu/latest"
+  end
 end
