@@ -48,4 +48,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       d.has_ssh = true
     end
   end
+
+  config.vm.define "cdktf" do |tf|
+    tf.vm.box = "ubuntu/focal64"
+    tf.vm.hostname = "cdktf"
+    tf.vm.provision "shell", path: "provision/cdktf.sh"
+  end
 end
