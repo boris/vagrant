@@ -54,4 +54,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     tf.vm.hostname = "cdktf"
     tf.vm.provision "shell", path: "provision/cdktf.sh"
   end
+
+  config.vm.define "debian-multi-disk" do |md|
+    md.vm.box = "debian/bullseye64"
+    md.vm.hostname  = "vagrant-bquiroz"
+    (0..2).each do |i|
+      md.vm.disk :disk, name: "disk-#{i}", size: "10GB"
+    end
+  end
 end
