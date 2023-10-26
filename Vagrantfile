@@ -3,6 +3,11 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.provider "virtuabox" do |vb|
+    vb.memory = "4096"
+    vb.cpu = "4"
+  end
+
   config.vm.define "ubuntu" do |ub|
     ub.vm.box = "ubuntu/jammy64"
     ub.vm.hostname = "ubuntu-base"
@@ -61,5 +66,19 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     (0..2).each do |i|
       md.vm.disk :disk, name: "disk-#{i}", size: "10GB"
     end
+  end
+
+  config.vm.define "k8s" do |k8s|
+    k8s.vm.box = "ubuntu/jammy64"
+    k8s.vm.hostname = "ubuntu-k8s"
+    k8s.vm.synced_folder "/home/boris/Class/LFS258", "/home/vagrant/LFS258"
+    k8s.vm.network "private_network", ip: "10.80.0.10"
+  end
+
+  config.vm.define "k8s-worker" do |k8sw|
+    k8sw.vm.box = "ubuntu/jammy64"
+    k8sw.vm.hostname = "ubuntu-k8s-worker"
+    k8sw.vm.synced_folder "/home/boris/Class/LFS258", "/home/vagrant/LFS258"
+    k8sw.vm.network "private_network", ip: "10.80.0.20"
   end
 end
