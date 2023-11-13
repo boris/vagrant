@@ -73,6 +73,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     k8s.vm.hostname = "ubuntu-k8s"
     k8s.vm.synced_folder "/home/boris/Class/LFS258", "/home/vagrant/LFS258"
     k8s.vm.network "private_network", ip: "10.80.0.10"
+    k8s.vm.network "public_network", ip: "192.168.1.210"
   end
 
   config.vm.define "k8s-worker" do |k8sw|
@@ -80,5 +81,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     k8sw.vm.hostname = "ubuntu-k8s-worker"
     k8sw.vm.synced_folder "/home/boris/Class/LFS258", "/home/vagrant/LFS258"
     k8sw.vm.network "private_network", ip: "10.80.0.20"
+    k8sw.vm.network "public_network", ip: "192.168.1.220"
   end
 end
